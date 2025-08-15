@@ -3,6 +3,21 @@
 using namespace std;
 enum CoffeeType{Mocha,Latte,Expresso,Invalid};
 
+bool powerChoice()
+{
+    string choice;
+    cout<<"Do you want to turn on?(yes/no)\n";
+    cin>>choice;
+    return (choice=="yes");
+}
+
+bool powerOff()
+{
+    string poweroff;
+        cout<<"\nDo you want to power off?(yes/no)\n";
+        cin>>poweroff;
+        return (poweroff=="yes");
+}
 CoffeeType getCoffee(const string &coffeename)
 {
     if(coffeename=="mocha" || coffeename=="Mocha"){return Mocha;}
@@ -12,17 +27,16 @@ CoffeeType getCoffee(const string &coffeename)
 }
 int main()
 {
-    bool power=false;
-    string powerchoice;
+    // bool power=false;
+    // string powerchoice;
     string coffeeGet;
 
-    cout<<"Enter 'on' to power on:\n";
-    cin>>powerchoice;
+    // cout<<"Enter 'on' to power on:\n";
+    // cin>>powerchoice;
 
-    if(powerchoice=="on")
+    if(powerChoice())
     {
-        power=true;
-    }
+        bool power=true;
     while(power)
     {
         cout<<"\nEnter coffee type (mocha,latte,expresso)\n";
@@ -47,14 +61,12 @@ int main()
             cout<<"\nInvalid Coffee Type. Enter again.\n";
             break;
         }
-        string poweroff;
-        cout<<"\nDo you want to power off?(yes/no)\n";
-        cin>>poweroff;
-        if(poweroff=="yes")
+        if(powerOff())
         {
             power=false;
         }
     }
+}
     cout<<"\nPowering off\n";
     return 0;
 }
