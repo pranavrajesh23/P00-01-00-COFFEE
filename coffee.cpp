@@ -68,5 +68,6 @@ int main()
     }
 }
     cout<<"\nPowering off\n";
+
     return 0;
 }
