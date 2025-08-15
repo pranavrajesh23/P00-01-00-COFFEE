@@ -3,15 +3,22 @@
 using namespace std;
 int main()
 {
-    int power;
-    cout<<"Enter 1 to power on\n";
-    cin>>power;
-    int n;
-    cout<<"which coffee do you want?\n";
-    cin>>n;
-    while(power==1)
+    bool power=false;
+    string powerchoice;
+    int coffee;
+
+    cout<<"Enter yes to power on:\n";
+    cin>>powerchoice;
+
+    if(powerchoice=="yes")
     {
-        switch (n)
+        power=true;
+    }
+    while(power)
+    {
+        cout<<"Enter num 1 to 3 to order mocha,latte,expresso\n";
+        cin>>coffee;
+        switch (coffee)
         {
         case 1:
             cout<<"Adding chocolate powder\n";
@@ -27,12 +34,12 @@ int main()
             cout<<"Enter a number between 1 to 3\n";
             break;
         }
-        int poweroff;
-        cout<<"Enter 1 to order again and 0 to poweroff\n";
+        string poweroff;
+        cout<<"Enter 'yes' to order again and 'no' to poweroff\n";
         cin>>poweroff;
-        if(poweroff==0)
+        if(poweroff=="no")
         {
-            power=0;
+            power=false;
             cout<<"Powering off\n";
         }
     }
