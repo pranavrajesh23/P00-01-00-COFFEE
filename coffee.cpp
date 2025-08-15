@@ -1,46 +1,60 @@
 #include<iostream>
 #include<string>
 using namespace std;
+enum CoffeeType{Mocha,Latte,Expresso,Invalid};
+
+CoffeeType getCoffee(const string &coffeename)
+{
+    if(coffeename=="mocha" || coffeename=="Mocha"){return Mocha;}
+    if(coffeename=="latte"|| coffeename=="Lattee"){return Latte;}
+    if(coffeename=="expresso"|| coffeename=="Expresso"){return Expresso;}
+    return Invalid;
+}
 int main()
 {
     bool power=false;
     string powerchoice;
-    int coffee;
+    string coffeeGet;
 
-    cout<<"Enter yes to power on:\n";
+    cout<<"Enter 'on' to power on:\n";
     cin>>powerchoice;
 
-    if(powerchoice=="yes")
+    if(powerchoice=="on")
     {
         power=true;
     }
     while(power)
     {
-        cout<<"Enter num 1 to 3 to order mocha,latte,expresso\n";
-        cin>>coffee;
+        cout<<"\nEnter coffee type (mocha,latte,expresso)\n";
+        cin>>coffeeGet;
+
+        CoffeeType coffee=getCoffee(coffeeGet);
         switch (coffee)
         {
-        case 1:
-            cout<<"Adding chocolate powder\n";
+        case Mocha:
+            cout<<"\nAdding chocolate powder.\n";
 
-        case 2:
-            cout<<"Adding frothed milk\n";
+        case Latte:
+            cout<<"Adding frothed milk.\n";
 
-        case 3:
-            cout<<"Adding hot coffee\n";
-            cout<<"Enjoy your coffee\n";
+        case Expresso:
+            cout<<"Adding hot coffee.\n\n";
+            if(coffee==Mocha){cout<<"Enjoy your Mocha.\n";}
+            else if(coffee==Latte){cout<<"Enjoy your Lattee.\n";}
+            else{cout<<"Enjoy your Expresso.\n";}
             break;
         default:
-            cout<<"Enter a number between 1 to 3\n";
+            cout<<"\nInvalid Coffee Type. Enter again.\n";
             break;
         }
         string poweroff;
-        cout<<"Enter 'yes' to order again and 'no' to poweroff\n";
+        cout<<"\nDo you want to power off?(yes/no)\n";
         cin>>poweroff;
-        if(poweroff=="no")
+        if(poweroff=="yes")
         {
             power=false;
-            cout<<"Powering off\n";
         }
     }
+    cout<<"\nPowering off\n";
+    return 0;
 }
